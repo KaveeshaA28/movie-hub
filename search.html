@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineSearch</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="search.css">
+</head>
+<body>
+
+    <!-- TOP NAVBAR -->
+    <nav class="top-nav">
+        <div class="top-nav-brand">🎬 CineSearch</div>
+        <div class="top-nav-links">
+       
+        <a href="index.html" id="profileNavBtn" style="display:none;">👤 Profile</a>
+        <a href="index.html" id="loginNavBtn" class="nav-signin-btn">Sign In</a>
+        </div>
+    </nav>
+
+    <header>
+        <div class="logo">CineSearch</div>
+        <p class="tagline">Discover the world of cinema</p>
+    </header>
+
+    <div class="search-section">
+        <div class="search-wrapper">
+            <span class="search-icon">🎬</span>
+            <input type="text" id="movieTag" placeholder="Enter a movie title..." autocomplete="off" />
+            <button class="search-btn" onclick="search()">Search</button>
+        </div>
+    </div>
+
+    <div class="loading" id="loading">
+        <div class="film-reel">
+            <div class="reel-dot"></div>
+            <div class="reel-dot"></div>
+            <div class="reel-dot"></div>
+            <div class="reel-dot"></div>
+            <div class="reel-dot"></div>
+        </div>
+        <p>Searching the archives...</p>
+    </div>
+
+    <div class="error-msg" id="errorMsg">
+        🎞 No film found. Try another title.
+    </div>
+
+    <div id="result">
+        <div class="movie-card">
+            <div class="poster-wrap">
+                <img id="poster" src="" alt="Movie Poster" />
+                <div class="poster-overlay"></div>
+            </div>
+            <div class="movie-info">
+                <div class="movie-meta-top">
+                    <span class="badge" id="ratedBadge"></span>
+                    <span class="badge" id="yearBadge"></span>
+                    <span class="badge" id="runtimeBadge"></span>
+                </div>
+                <span id="title"></span>
+                <span id="tagLine"></span>
+                <div class="divider"></div>
+                <p id="plot"></p>
+                <div class="stats-row">
+                    <div class="stat">
+                        <span class="stat-label">Director</span>
+                        <span class="stat-value" id="director">—</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Genre</span>
+                        <span class="stat-value" id="genre">—</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Released</span>
+                        <span class="stat-value" id="released">—</span>
+                    </div>
+                </div>
+                <div class="imdb-score">
+                    <span class="imdb-box">IMDb</span>
+                    <span class="imdb-rating" id="imdbRating">—</span>
+                    <span class="imdb-votes" id="imdbVotes"></span>
+                    <div class="stars" id="starsRow"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ✅ CORRECT: pointing to search.js not index.js -->
+    <script src="search.js"></script>
+</body>
+</html> 

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineAccount — Create Account</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+
+    <div class="page-wrapper">
+
+        <!-- ══ LEFT PANEL ══ -->
+        <div class="left-panel">
+            <div class="brand">
+                <span class="brand-icon">🎬</span>
+                <span class="brand-name">CineAccount</span>
+            </div>
+
+            <div class="left-body">
+                <div class="step-tracker">
+                    <div class="st-item active" id="st1">
+                        <div class="st-circle"><span>1</span></div>
+                        <div class="st-info">
+                            <strong>Personal Info</strong>
+                            <p>Your basic details</p>
+                        </div>
+                    </div>
+                    <div class="st-connector"></div>
+                    <div class="st-item" id="st2">
+                        <div class="st-circle"><span>2</span></div>
+                        <div class="st-info">
+                            <strong>Credentials</strong>
+                            <p>Username & password</p>
+                        </div>
+                    </div>
+                    <div class="st-connector"></div>
+                    <div class="st-item" id="st3">
+                        <div class="st-circle"><span>3</span></div>
+                        <div class="st-info">
+                            <strong>Preferences</strong>
+                            <p>Personalise your experience</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="left-features">
+                    <div class="lf-item">
+                        <span>🎥</span>
+                        <div>
+                            <strong>Track every movie</strong>
+                            <p>Log what you watch</p>
+                        </div>
+                    </div>
+                    <div class="lf-item">
+                        <span>⭐</span>
+                        <div>
+                            <strong>Build watchlists</strong>
+                            <p>Save films for later</p>
+                        </div>
+                    </div>
+                    <div class="lf-item">
+                        <span>🎭</span>
+                        <div>
+                            <strong>Discover genres</strong>
+                            <p>Personalised picks</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="left-footer">
+                Already have an account?
+                <a href="index.html">Sign In →</a>
+            </div>
+        </div>
+
+        <!-- ══ RIGHT PANEL ══ -->
+        <div class="right-panel">
+
+            <!-- Progress bar -->
+            <div class="progress-track">
+                <div class="progress-fill" id="progressFill" style="width:33%"></div>
+            </div>
+            <div class="step-pills">
+                <span class="pill active" id="pill1">1. Personal</span>
+                <span class="pill" id="pill2">2. Credentials</span>
+                <span class="pill" id="pill3">3. Preferences</span>
+            </div>
+
+            <!-- ── STEP 1: Personal Info ── -->
+            <div class="form-step active-step" id="step1">
+                <div class="step-head">
+                    <h2>Personal Info</h2>
+                    <p>Let's start with the basics</p>
+                </div>
+
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label>First Name *</label>
+                        <div class="input-wrap">
+                            <span class="iicon">👤</span>
+                            <input type="text" id="s1FirstName" placeholder="John" />
+                        </div>
+                        <span class="ferr" id="e1FirstName"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name *</label>
+                        <div class="input-wrap">
+                            <span class="iicon">👤</span>
+                            <input type="text" id="s1LastName" placeholder="Doe" />
+                        </div>
+                        <span class="ferr" id="e1LastName"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Date of Birth <span class="opt">optional</span></label>
+                    <div class="input-wrap">
+                        <span class="iicon">📅</span>
+                        <input type="date" id="s1Dob" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Country <span class="opt">optional</span></label>
+                    <div class="input-wrap sel-wrap">
+                        <span class="iicon">🌍</span>
+                        <select id="s1Country">
+                            <option value="">Select your country</option>
+                            <option>Sri Lanka</option>
+                            <option>United States</option>
+                            <option>United Kingdom</option>
+                            <option>India</option>
+                            <option>Australia</option>
+                            <option>Canada</option>
+                            <option>Germany</option>
+                            <option>France</option>
+                            <option>Japan</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Gender <span class="opt">optional</span></label>
+                    <div class="gender-chips">
+                        <div class="gchip" onclick="selectGender(this)" data-val="Male">♂ Male</div>
+                        <div class="gchip" onclick="selectGender(this)" data-val="Female">♀ Female</div>
+                        <div class="gchip" onclick="selectGender(this)" data-val="Non-binary">⚧ Non-binary</div>
+                        <div class="gchip" onclick="selectGender(this)" data-val="Other">✦ Other</div>
+                    </div>
+                </div>
+
+                <button class="btn-next" onclick="nextStep(1)">
+                    Continue <span class="arrow">→</span>
+                </button>
+            </div>
+
+            <!-- ── STEP 2: Credentials ── -->
+            <div class="form-step" id="step2">
+                <div class="step-head">
+                    <h2>Account Credentials</h2>
+                    <p>Create your login details</p>
+                </div>
+
+                <div class="form-group">
+                    <label>Username *</label>
+                    <div class="input-wrap">
+                        <span class="iicon">@</span>
+                        <input type="text" id="s2Username" placeholder="Choose a unique username" oninput="checkUsername()" />
+                        <span class="input-badge" id="unBadge"></span>
+                    </div>
+                    <span class="fhint" id="unHint"></span>
+                    <span class="ferr" id="e2Username"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Email Address *</label>
+                    <div class="input-wrap">
+                        <span class="iicon">✉</span>
+                        <input type="email" id="s2Email" placeholder="you@example.com" />
+                    </div>
+                    <span class="ferr" id="e2Email"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Password *</label>
+                    <div class="input-wrap">
+                        <span class="iicon">🔒</span>
+                        <input type="password" id="s2Password" placeholder="Min. 6 characters" oninput="checkStrength()" />
+                        <button type="button" class="eye-btn" onclick="togglePass('s2Password',this)">👁</button>
+                    </div>
+                    <div class="strength-row">
+                        <div class="strength-track">
+                            <div class="strength-bar" id="sBar"></div>
+                        </div>
+                        <span class="strength-label" id="sLabel"></span>
+                    </div>
+                    <span class="ferr" id="e2Password"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Confirm Password *</label>
+                    <div class="input-wrap">
+                        <span class="iicon">🔒</span>
+                        <input type="password" id="s2Confirm" placeholder="Repeat your password" />
+                        <button type="button" class="eye-btn" onclick="togglePass('s2Confirm',this)">👁</button>
+                    </div>
+                    <span class="ferr" id="e2Confirm"></span>
+                </div>
+
+                <div class="btn-pair">
+                    <button class="btn-back" onclick="prevStep(2)">← Back</button>
+                    <button class="btn-next" onclick="nextStep(2)">Continue →</button>
+                </div>
+            </div>
+
+            <!-- ── STEP 3: Preferences ── -->
+            <div class="form-step" id="step3">
+                <div class="step-head">
+                    <h2>Your Preferences</h2>
+                    <p>Make CineAccount yours</p>
+                </div>
+
+                <div class="form-group">
+                    <label>Favourite Genre <span class="opt">pick one</span></label>
+                    <div class="genre-grid">
+                        <div class="genre-chip" onclick="pickGenre(this)" data-g="Action">🔥 Action</div>
+                        <div class="genre-chip" onclick="pickGenre(this)" data-g="Comedy">😂 Comedy</div>
+                        <div class="genre-chip" onclick="pickGenre(this)" data-g="Drama">🎭 Drama</div>
+                        <div class="genre-chip" onclick="pickGenre(this)" data-g="Horror">👻 Horror</div>
+                        <div class="genre-chip" onclick="pickGenre(this)" data-g="Sci-Fi">🚀 Sci-Fi</div>
+                        <div class="genre-chip" onclick="pickGenre(this)" data-g="Thriller">🔪 Thriller</div>
+                        <div class="genre-chip" onclick="pickGenre(this)" data-g="Romance">💕 Romance</div>
+                        <div class="genre-chip" onclick="pickGenre(this)" data-g="Animation">🎨 Animation</div>
+                        <div class="genre-chip" onclick="pickGenre(this)" data-g="Documentary">📽 Documentary</div>
+                        <div class="genre-chip" onclick="pickGenre(this)" data-g="Fantasy">🧙 Fantasy</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Bio <span class="opt">optional</span></label>
+                    <div class="input-wrap ta-wrap">
+                        <textarea id="s3Bio" placeholder="Tell us about your cinema taste..." rows="3"></textarea>
+                    </div>
+                </div>
+
+                <div class="pref-box">
+                    <div class="pref-row">
+                        <div>
+                            <strong>Email Notifications</strong>
+                            <p>Updates about new features</p>
+                        </div>
+                        <label class="tog">
+                            <input type="checkbox" id="pEmail" checked />
+                            <span class="tog-track"></span>
+                        </label>
+                    </div>
+                    <div class="pref-row">
+                        <div>
+                            <strong>Show IMDb Ratings</strong>
+                            <p>Display ratings on movie cards</p>
+                        </div>
+                        <label class="tog">
+                            <input type="checkbox" id="pRatings" checked />
+                            <span class="tog-track"></span>
+                        </label>
+                    </div>
+                    <div class="pref-row">
+                        <div>
+                            <strong>Spoiler-Free Mode</strong>
+                            <p>Hide plot descriptions by default</p>
+                        </div>
+                        <label class="tog">
+                            <input type="checkbox" id="pSpoiler" />
+                            <span class="tog-track"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <label class="agree-label">
+                    <input type="checkbox" id="agreeTerms" />
+                    <span class="chkmark"></span>
+                    I agree to the <a href="#">Terms of Service</a> &amp; <a href="#">Privacy Policy</a>
+                </label>
+
+                <div class="form-err-box" id="s3Error"></div>
+
+                <div class="btn-pair">
+                    <button class="btn-back" onclick="prevStep(3)">← Back</button>
+                    <button class="btn-next create-btn" onclick="createAccount()">
+                        🎬 Create Account
+                    </button>
+                </div>
+            </div>
+
+            <!-- ── SUCCESS ── -->
+            <div class="form-step success-panel" id="stepSuccess">
+                <div class="success-glow"></div>
+                <div class="success-icon">🎬</div>
+                <h2 class="success-title">You're in!</h2>
+                <p class="success-sub">Your CineAccount has been created.</p>
+                <div class="success-card" id="successCard"></div>
+                <a href="index.html" class="btn-next" style="text-decoration:none; text-align:center; margin-top:8px;">
+                    Go to My Profile →
+                </a>
+                <a href="search.html" class="btn-outline" style="text-decoration:none; text-align:center;">
+                    🎥 Search Movies
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="register.js"></script>
+</body>
+</html>

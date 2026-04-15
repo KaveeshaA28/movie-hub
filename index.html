@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineAccount</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <div class="bg-grid"></div>
+
+    <!-- AUTH PAGES -->
+    <div id="authContainer" class="auth-container">
+
+        <!-- LEFT PANEL -->
+        <div class="auth-left">
+            <div class="brand">
+                <span class="brand-icon">🎬</span>
+                <span class="brand-name">CineAccount</span>
+            </div>
+            <h1 class="auth-headline">Your cinema.<br>Your world.</h1>
+            <p class="auth-subtext">Create an account to track your favourite films, build watchlists, and connect with other cinephiles.</p>
+            <div class="auth-deco">
+                <div class="deco-bar"></div>
+                <div class="deco-bar"></div>
+                <div class="deco-bar"></div>
+            </div>
+        </div>
+
+        <!-- RIGHT PANEL -->
+        <div class="auth-right">
+
+            <div class="tab-switcher">
+                <button class="tab-btn active" id="loginTab" onclick="switchTab('login')">Sign In</button>
+                <button class="tab-btn" id="registerTab" onclick="switchTab('register')">Create Account</button>
+            </div>
+
+            <!-- LOGIN FORM -->
+            <form id="loginForm" class="auth-form" onsubmit="handleLogin(event)">
+                <div class="form-header">
+                    <h2>Welcome back</h2>
+                    <p>Sign in to your account</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="loginEmail">Email Address</label>
+                    <div class="input-wrap">
+                        <span class="input-icon">✉</span>
+                        <input type="email" id="loginEmail" placeholder="you@example.com" required />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <div class="input-wrap">
+                        <span class="input-icon">🔒</span>
+                        <input type="password" id="loginPassword" placeholder="Enter your password" required />
+                        <button type="button" class="toggle-pass" onclick="togglePassword('loginPassword', this)">👁</button>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="rememberMe" />
+                        <span class="checkmark"></span>
+                        Remember me
+                    </label>
+                    <a href="#" class="forgot-link">Forgot password?</a>
+                </div>
+
+                <div class="form-error" id="loginError"></div>
+
+                <button type="submit" class="submit-btn">
+                    <span>Sign In</span>
+                    <span class="btn-arrow">→</span>
+                </button>
+
+                <p class="switch-hint">Don't have an account? <a href="#" onclick="switchTab('register')">Create one</a></p>
+            </form>
+
+            <!-- REGISTER FORM -->
+            <form id="registerForm" class="auth-form hidden" onsubmit="handleRegister(event)">
+                <div class="form-header">
+                    <h2>Join CineAccount</h2>
+                    <p>Create your free account today</p>
+                </div>
+
+                <div class="form-row-2">
+                    <div class="form-group">
+                        <label for="regFirstName">First Name</label>
+                        <div class="input-wrap">
+                            <span class="input-icon">👤</span>
+                            <input type="text" id="regFirstName" placeholder="John" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="regLastName">Last Name</label>
+                        <div class="input-wrap">
+                            <span class="input-icon">👤</span>
+                            <input type="text" id="regLastName" placeholder="Doe" required />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="regUsername">Username</label>
+                    <div class="input-wrap">
+                        <span class="input-icon">@</span>
+                        <input type="text" id="regUsername" placeholder="Choose a username" required />
+                    </div>
+                    <span class="field-hint" id="usernameHint"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="regEmail">Email Address</label>
+                    <div class="input-wrap">
+                        <span class="input-icon">✉</span>
+                        <input type="email" id="regEmail" placeholder="you@example.com" required />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="regPassword">Password</label>
+                    <div class="input-wrap">
+                        <span class="input-icon">🔒</span>
+                        <input type="password" id="regPassword" placeholder="Min. 6 characters" required />
+                        <button type="button" class="toggle-pass" onclick="togglePassword('regPassword', this)">👁</button>
+                    </div>
+                    <div class="password-strength" id="passwordStrength">
+                        <div class="strength-bar"><div class="strength-fill" id="strengthFill"></div></div>
+                        <span id="strengthText"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="regConfirmPassword">Confirm Password</label>
+                    <div class="input-wrap">
+                        <span class="input-icon">🔒</span>
+                        <input type="password" id="regConfirmPassword" placeholder="Repeat your password" required />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="regFavGenre">Favourite Genre</label>
+                    <div class="input-wrap select-wrap">
+                        <span class="input-icon">🎭</span>
+                        <select id="regFavGenre">
+                            <option value="">Select a genre</option>
+                            <option>Action</option>
+                            <option>Comedy</option>
+                            <option>Drama</option>
+                            <option>Horror</option>
+                            <option>Sci-Fi</option>
+                            <option>Thriller</option>
+                            <option>Romance</option>
+                            <option>Animation</option>
+                            <option>Documentary</option>
+                        </select>
+                    </div>
+                </div>
+
+                <label class="checkbox-label terms">
+                    <input type="checkbox" id="agreeTerms" required />
+                    <span class="checkmark"></span>
+                    I agree to the <a href="#">Terms of Service</a>
+                </label>
+
+                <div class="form-error" id="registerError"></div>
+
+                <button type="submit" class="submit-btn">
+                    <span>Create Account</span>
+                    <span class="btn-arrow">→</span>
+                </button>
+
+                <p class="switch-hint">Already have an account? <a href="#" onclick="switchTab('login')">Sign in</a></p>
+            </form>
+
+        </div>
+    </div>
+
+
+    <!-- PROFILE DASHBOARD -->
+    <div id="profileContainer" class="profile-container hidden">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <span class="brand-icon">🎬</span>
+                <span class="brand-name">CineAccount</span>
+            </div>
+
+            <div class="sidebar-avatar">
+                <div class="avatar-ring">
+                    <div class="avatar-img" id="sidebarAvatar"></div>
+                </div>
+                <p class="sidebar-name" id="sidebarName"></p>
+                <p class="sidebar-username" id="sidebarUsername"></p>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" onclick="showSection('overview', this)">
+                    <span class="nav-icon">⬡</span> Overview
+                </a>
+                <a href="#" class="nav-item" onclick="showSection('edit', this)">
+                    <span class="nav-icon">✏</span> Edit Profile
+                </a>
+                <a href="#" class="nav-item" onclick="showSection('security', this)">
+                    <span class="nav-icon">🛡</span> Security
+                </a>
+                <a href="#" class="nav-item" onclick="showSection('preferences', this)">
+                    <span class="nav-icon">⚙</span> Preferences
+                </a>
+            </nav>
+
+            <button class="logout-btn" onclick="handleLogout()">
+                <span>↩</span> Sign Out
+            </button>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="profile-main">
+
+            <!-- OVERVIEW -->
+            <section id="section-overview" class="profile-section active-section">
+                <div class="section-header">
+                    <h2>My Profile</h2>
+                    <p>Welcome back, <span id="overviewName"></span>!</p>
+                </div>
+
+                <div class="profile-card">
+                    <div class="profile-avatar-large" id="overviewAvatar"></div>
+                    <div class="profile-card-info">
+                        <h3 id="overviewFullName"></h3>
+                        <p class="profile-email" id="overviewEmail"></p>
+                        <div class="profile-badges">
+                            <span class="pbadge genre-badge" id="overviewGenre"></span>
+                            <span class="pbadge member-badge">🎬 Member</span>
+                        </div>
+                    </div>
+                    <button class="edit-shortcut" onclick="showSection('edit', document.querySelectorAll('.nav-item')[1])">Edit Profile →</button>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🎥</div>
+                        <div class="stat-num" id="statMovies">0</div>
+                        <div class="stat-label">Movies Watched</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-num" id="statFavs">0</div>
+                        <div class="stat-label">Favourites</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📋</div>
+                        <div class="stat-num" id="statWatchlist">0</div>
+                        <div class="stat-label">Watchlist</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📅</div>
+                        <div class="stat-num" id="statDays"></div>
+                        <div class="stat-label">Days Member</div>
+                    </div>
+                </div>
+
+                <div class="activity-section">
+                    <h3>Account Details</h3>
+                    <div class="detail-list">
+                        <div class="detail-row">
+                            <span class="detail-label">Username</span>
+                            <span class="detail-value" id="detailUsername"></span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Email</span>
+                            <span class="detail-value" id="detailEmail"></span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Favourite Genre</span>
+                            <span class="detail-value" id="detailGenre"></span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Member Since</span>
+                            <span class="detail-value" id="detailJoined"></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- EDIT PROFILE -->
+            <section id="section-edit" class="profile-section">
+                <div class="section-header">
+                    <h2>Edit Profile</h2>
+                    <p>Update your personal information</p>
+                </div>
+
+                <form class="edit-form" onsubmit="handleEditProfile(event)">
+                    <div class="avatar-upload">
+                        <div class="avatar-preview" id="avatarPreview"></div>
+                        <div class="avatar-upload-info">
+                            <p>Profile Avatar Color</p>
+                            <p class="hint">Pick a color for your avatar</p>
+                            <div class="color-swatches" id="colorSwatches"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-row-2">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <div class="input-wrap">
+                                <span class="input-icon">👤</span>
+                                <input type="text" id="editFirstName" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <div class="input-wrap">
+                                <span class="input-icon">👤</span>
+                                <input type="text" id="editLastName" required />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Username</label>
+                        <div class="input-wrap">
+                            <span class="input-icon">@</span>
+                            <input type="text" id="editUsername" required />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <div class="input-wrap">
+                            <span class="input-icon">✉</span>
+                            <input type="email" id="editEmail" required />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Bio</label>
+                        <div class="input-wrap textarea-wrap">
+                            <textarea id="editBio" placeholder="Tell us about your cinema taste..." rows="3"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Favourite Genre</label>
+                        <div class="input-wrap select-wrap">
+                            <span class="input-icon">🎭</span>
+                            <select id="editGenre">
+                                <option value="">Select a genre</option>
+                                <option>Action</option>
+                                <option>Comedy</option>
+                                <option>Drama</option>
+                                <option>Horror</option>
+                                <option>Sci-Fi</option>
+                                <option>Thriller</option>
+                                <option>Romance</option>
+                                <option>Animation</option>
+                                <option>Documentary</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-success" id="editSuccess"></div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn">Save Changes</button>
+                        <button type="button" class="cancel-btn" onclick="showSection('overview', document.querySelectorAll('.nav-item')[0])">Cancel</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- SECURITY -->
+            <section id="section-security" class="profile-section">
+                <div class="section-header">
+                    <h2>Security</h2>
+                    <p>Manage your password and account security</p>
+                </div>
+
+                <form class="edit-form" onsubmit="handleChangePassword(event)">
+                    <div class="security-info">
+                        <span class="sec-icon">🛡</span>
+                        <div>
+                            <strong>Password Protection</strong>
+                            <p>Use a strong password of at least 6 characters</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Current Password</label>
+                        <div class="input-wrap">
+                            <span class="input-icon">🔒</span>
+                            <input type="password" id="currentPassword" placeholder="Enter current password" />
+                            <button type="button" class="toggle-pass" onclick="togglePassword('currentPassword', this)">👁</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>New Password</label>
+                        <div class="input-wrap">
+                            <span class="input-icon">🔒</span>
+                            <input type="password" id="newPassword" placeholder="Enter new password" />
+                            <button type="button" class="toggle-pass" onclick="togglePassword('newPassword', this)">👁</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Confirm New Password</label>
+                        <div class="input-wrap">
+                            <span class="input-icon">🔒</span>
+                            <input type="password" id="confirmNewPassword" placeholder="Repeat new password" />
+                        </div>
+                    </div>
+
+                    <div class="form-error" id="securityError"></div>
+                    <div class="form-success" id="securitySuccess"></div>
+
+                    <button type="submit" class="submit-btn">Update Password</button>
+                </form>
+
+                <div class="danger-zone">
+                    <h3>Danger Zone</h3>
+                    <div class="danger-card">
+                        <div>
+                            <strong>Delete Account</strong>
+                            <p>Permanently delete your account and all data</p>
+                        </div>
+                        <button class="delete-btn" onclick="handleDeleteAccount()">Delete Account</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PREFERENCES -->
+            <section id="section-preferences" class="profile-section">
+                <div class="section-header">
+                    <h2>Preferences</h2>
+                    <p>Customize your CineAccount experience</p>
+                </div>
+
+                <div class="pref-group">
+                    <h3>Notifications</h3>
+                    <div class="pref-item">
+                        <div class="pref-info">
+                            <strong>Email Notifications</strong>
+                            <p>Receive updates about new features</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="prefEmail" checked onchange="savePref()" />
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    <div class="pref-item">
+                        <div class="pref-info">
+                            <strong>Watchlist Reminders</strong>
+                            <p>Get reminded about movies in your watchlist</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="prefWatchlist" onchange="savePref()" />
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="pref-group">
+                    <h3>Display</h3>
+                    <div class="pref-item">
+                        <div class="pref-info">
+                            <strong>Show IMDb Ratings</strong>
+                            <p>Display ratings on movie cards</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="prefRatings" checked onchange="savePref()" />
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    <div class="pref-item">
+                        <div class="pref-info">
+                            <strong>Spoiler-Free Mode</strong>
+                            <p>Hide plot descriptions by default</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="prefSpoiler" onchange="savePref()" />
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-success" id="prefSuccess"></div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html>
